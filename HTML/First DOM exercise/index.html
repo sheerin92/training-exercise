@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="math.css" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Basic Math DOM</title>
+  </head>
+  <body class="bg-dark">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6 mx-auto">
+                  <div class="card card-body text-center mt-3">
+                      <h1 class="heading display-5 pb-2">Basic Math</h1>
+                      <form id="math-form">
+                          <div class="form-group">
+                              <div class="input-group">
+                                  <label for="numberOne">Input Number 1</label> 
+                                  <input type="number" class="form-control" id="numberOne" placeholder="Enter the first number" />
+                              </div>
+                          </div>
+                      
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="numberTwo">Input Number 2</label> 
+                                    <input type="number" class="form-control" id="numberTwo" placeholder="Enter the second number" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="button" value="Add" class="btn btn-dark" onclick="addition()"/>
+                                <input type="button" value="Subtract" class="btn btn-dark" onclick="subtraction()"/>
+                                <input type="button" value="Multiply" class="btn btn-dark" onclick="multiplication()" />
+                                <input type="button" value="Divide" class="btn btn-dark" onclick="division()" />
+                            </div>
+                     </form>
+            <!--Results-->
+                        <div id="result" class="pt-1">
+                            <h3>Result</h3>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label for="output">Output is</label> 
+                                    <input type="number" class="form-control" id="output" disabled />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        
+        <script src="math.js"></script>
+    </body>
+</html>

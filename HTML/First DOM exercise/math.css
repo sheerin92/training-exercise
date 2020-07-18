@@ -1,0 +1,14 @@
+input{
+    margin: 5px 3px;
+    vertical-align: middle;
+}
+label{
+    margin: 5px 3px;
+    display:block;
+    width: 200px;
+    float: left;
+    clear: left;
+}
+.btn{
+    margin: 8px;
+}

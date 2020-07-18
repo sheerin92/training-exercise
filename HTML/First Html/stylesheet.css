@@ -1,0 +1,125 @@
+figure{
+    margin-left:200px;
+    margin-right:200px;
+    border:100px;
+    
+}
+#quote{
+    text-align:center;
+    text-align: justify;
+    font-size:22px;
+    font-family: 'Pacifico',cursive;
+    
+}
+#time{
+    margin-left:240px;
+    font-weight: bold;
+    font-size: 40px;
+    color:#dedede;
+}
+
+table{
+    border-top:0.5px solid grey;
+    clear:both;
+
+}
+.col1,.col2{
+    border-bottom: 0.5px solid grey;
+    text-align: left;
+    margin:5px;
+    padding:5px;
+    font-size:14px;
+    font-family: sans-serif;
+    clear:both;
+    
+}
+.block{
+    width:65%;
+    padding:20px;
+    margin:20px;
+    text-align: center;
+    clear:both;
+}
+.col1{
+    width:100px;
+    text-align: center;
+    clear:both;
+}
+.col2{
+    background-color:whitesmoke;
+    clear:both;
+}
+#head{
+    float: right;
+    position:absolute;
+    top:670px;
+    left:1000px;
+    font-size: 24px;
+    font-family: sans-serif;
+    clear:both;
+    
+}
+#image{
+    float:right;
+    position:relative;
+    bottom:600px;
+    right:80px;
+    clear:both;
+}
+.tab{
+    float:right;
+    border: none;
+    position: relative;
+    right:85px;
+    bottom:600px;
+    font-family:sans-serif;
+    clear:both;
+}
+
+.col3{
+    font-size: 13px;
+    font-family: sans-serif;
+    clear: both;
+}
+.col4{
+    font-size: 13px;
+    text-align: center;
+    font-family: sans-serif;
+    border-bottom: 0.5px solid grey;
+    clear: both;
+}
+blockquote{
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+aside{
+    text-align: center;
+    font-weight: bold;
+    font-family: cursive;
+    font-size: x-large;
+    border: 0.3px solid #dedede;
+    width:75%;
+    float:right;
+    position: relative;
+    bottom:150px;
+    left:150px;
+    background-color: #dedede;
+    font-family: 'Pacifico',cursive;
+}
+a:link{
+    text-decoration: none;
+    color:blue;
+}
+a:hover{
+    color:purple;
+}
+
+@media screen and ( max-width:800px){
+    figure, .first-block, .second-block{
+        width:100%;
+    }
+
+}
+  
+
