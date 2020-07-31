@@ -73,33 +73,33 @@
             <h1>freeCodeCamp Survey Form</h1>
             <h3>Thank you for taking time to help us improve the  platform</h3>
         
-        <form id="survey-form" method="POST">
+        <form id="survey-form">
             <fieldset>
                 <div class="column">
                 Name <br/><br/>
-                <input type="text" name="name" required placeholder="Enter your name" class="w-100"/><br/><br/>
+                <input id="name" type="text" name="my-name" required placeholder="Enter your name" class="w-100"/><br/><br/>
                 Email <br/><br/>
-                <input type="email" name="email" required placeholder="Enter your Email" class="w-100" /><br/><br/>
+                <input id="myemail" type="email" name="email" required placeholder="Enter your Email" class="w-100" /><br/><br/>
                 Age(optional) <br/><br/>
-                <input type="number" name="age" placeholder="Age" class="w-100" /><br/><br/>
+                <input id="myage" type="number" name="age" placeholder="Age" class="w-100" /><br/><br/>
 
                 Which option best describe your current role? <br/><br/>
-                <select name="role" class="w-100" >
+                <select name="role" id="role" class="w-100" >
                     <option value=""> Select current role</option>
                     <option value="student"> Student</option>
                     <option value="full-time job">Full-time job</option>
-                    <option value="part-timr job"> Part-time job</option>
+                    <option value="part-time job"> Part-time job</option>
                     <option value="full-time learner">Full-time learner</option> 
                     <option value="part-time learner">Part-time learner</option> 
                 </select> <br/><br/>
 
                 Would you recommend freeCodeCamp to a friend? <br/><br/>
-                <input type="radio" name="yes" value="definitely"/>Definitely <br/><br/>
-                <input type="radio" name="yes" value="maybe"/>Maybe <br/><br/>
-                <input type="radio" name="yes" value="not sure"/>Not Sure <br/><br/>
+                <input type="radio" id="recommend" name="yes" value="definitely" onchange="recommendOnChange(value)"/>Definitely <br/><br/>
+                <input type="radio" id="recommend1" name="yes" value="maybe" onchange="recommendOnChange(value)"/>Maybe <br/><br/>
+                <input type="radio" id="recommend2" name="yes" value="not sure" onchange="recommendOnChange(value)"/>Not Sure <br/><br/>
 
                 What is your favorite feature of freeCode Camp? <br/><br/>
-                <select name="feature" class="w-100">
+                <select name="feature" id="favorite" class="w-100">
                     <option value="">Select an option</option> 
                     <option value="challenges"> Challenges</option>
                     <option value="projects"> Projects</option> 
@@ -108,26 +108,28 @@
                 </select> <br/><br/>
 
                 What would you like to see improved? (check all that apply)<br/><br/>
-               <input type="checkbox" name="front-end" value="front-end project"/>Front-end Projects<br/><br/>
-               <input type="checkbox" name="back-end" value="back-end project"/>Back-end Projects<br/><br/>
-               <input type="checkbox" name="data" value="Visualization"/>Data Visualization<br/><br/>
-               <input type="checkbox" name="Challenges" value="Challenges"/>Challenges<br/><br/>
-               <input type="checkbox" name="community" value="open-source community"/>Open Source Community<br/><br/>
-               <input type="checkbox" name="help" value="gitter help rooms"/>Gitter help rooms<br/><br/>
-               <input type="checkbox" name="video" value="Videos"/>Videos<br/><br/>
-               <input type="checkbox" name="meetup" value="city meetups"/>City Meetups<br/><br/>
-               <input type="checkbox" name="wiki" value="wiki"/>Wiki<br/><br/>
-               <input type="checkbox" name="forum" value="forum"/> Forum<br/><br/>
-               <input type="checkbox" name="courses" value="Additional courses"/>Additional Courses<br/><br/>
+               <input type="checkbox" name="front-end" value="front-end project" onchange="improveOnChange(value)"/>Front-end Projects<br/><br/>
+               <input type="checkbox" name="back-end" value="back-end project" onchange="improveOnChange(value)"/>Back-end Projects<br/><br/>
+               <input type="checkbox" name="data" value="Visualization" onchange="improveOnChange(value)"/>Data Visualization<br/><br/>
+               <input type="checkbox" name="Challenges" value="Challenges" onchange="improveOnChange(value)"/>Challenges<br/><br/>
+               <input type="checkbox" name="community" value="open-source community" onchange="improveOnChange(value)"/>Open Source Community<br/><br/>
+               <input type="checkbox" name="help" value="gitter help rooms" onchange="improveOnChange(value)"/>Gitter help rooms<br/><br/>
+               <input type="checkbox" name="video" value="Videos" onchange="improveOnChange(value)"/>Videos<br/><br/>
+               <input type="checkbox" name="meetup" value="city meetups" onchange="improveOnChange(value)"/>City Meetups<br/><br/>
+               <input type="checkbox" name="wiki" value="wiki" onchange="improveOnChange(value)"/>Wiki<br/><br/>
+               <input type="checkbox" name="forum" value="forum" onchange="improveOnChange(value)"/> Forum<br/><br/>
+               <input type="checkbox" name="courses" value="Additional courses" onchange="improveOnChange(value)"/>Additional Courses<br/><br/>
 
                 Any comments or sugesstion <br/><br/>
-                <textarea name="suggestion" placeholder="Enter your Comment here..."  class="comment" ></textarea> <br/><br/>
+                <textarea id="suggest" name="suggestion" placeholder="Enter your Comment here..."  class="comment" ></textarea> <br/><br/>
                 <block>
-                <input id="submit" type="button" value="submit" class="button" onclick="submit()"/>
+                <input id="submit" type="button" value="submit" class="button" onclick="surveyFormSubmit()" />
                 </block>
                 </div>
             </fieldset>
         </form>
     </div>
+
+    <script src="surveyFormSubmit.js"></script>
 </body>
 </html>
