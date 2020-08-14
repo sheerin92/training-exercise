@@ -1,0 +1,127 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Student Details using CRUD</title>
+    <style>
+        table,
+        td {
+            border: 1px solid lightgray;
+            text-align: center;
+        }
+
+        #table-container {
+            margin-top: 20px;
+        }
+
+        #table-container table {
+            width: 100%;
+        }
+
+        #table-container table i {
+            cursor: pointer;
+        }
+
+        #updateBtn {
+            display: none;
+        }
+
+        #std_id[disabled] {
+            opacity: .3;
+        }
+
+        #updateBtn,
+        #addBtn {
+            margin: 30px 15px 30px 15px;
+            padding: 0;
+        }
+
+        #age {
+            height: 38px;
+        }
+
+        #form {
+            margin-top: 20px;
+        }
+
+        .success,
+        .error {
+            color: white;
+            padding: 5px;
+            margin: 5px 0 15px 0;
+        }
+
+        .success {
+            background: green;
+        }
+
+        .error {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="card card-body mt-3" id="std-form">
+                    <h1 class="heading display-5 pb-2">Add Student Details</h1>
+                    <form id="student-form">
+                        <div class="row" id="form">
+                            <div class="col-md-3 mx-auto">
+                                <label for="std_id">Student ID</label>
+                                <input type="text" id="std_id" class="form-control" />
+                            </div>
+                            <div class="col-md-3 mx-auto">
+                                <label for="name">Student Name</label>
+                                <input type="text" id="name" class="form-control" />
+                            </div>
+                            <div class="col-md-3 mx-auto">
+                                <label for="age">DOB</label>
+                                <input type="date" id="age" class="form-control" />
+                            </div>
+                            <div class="col-md-3 mx-auto">
+                                <label for="dept">Department</label>
+                                <input type="text" id="dept" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="button" value="Add" class="u-full-width" onclick="addStudentDetails()"
+                                id="addBtn" />
+                            <input type="button" value="Update" class="u-full-width" onclick="updateStudentDetails()"
+                                id="updateBtn" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div id="table-container">
+                    <table id="stdtab">
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Student Name</th>
+                                <th>DOB</th>
+                                <th>Department</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

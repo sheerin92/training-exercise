@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" /> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Employee list</title>
+    <style>
+        table, td{
+            border: 1px solid lightgray;
+            text-align: center;
+        }
+
+        #table-container{
+            margin-top: 20px;
+        }
+        #table-container table{
+            width: 100%;
+        }
+
+        #table-container table i{
+            cursor: pointer;
+        }
+        #updateBtn{
+            display: none;
+        }
+        #empid[disabled]{
+            opacity: .3;
+        }
+        #updateBtn, #addBtn{
+            margin-top: 20px;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="card card-body mt-3">
+                     <h1 class="heading display-5 pb-2">Add Employee Details</h1>
+                    <form id="employee-form" >
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="empid">Employee ID</label> 
+                            <input type="text" id="empid" class="u-full-width" />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="name">Employee Name</label> 
+                            <input type="text" id="name" class="u-full-width" />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" class="u-full-width" />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="designation">Designation</label>
+                            <input type="text" id="designation" class="u-full-width" /> 
+                            </div>
+                            <div class="col-md-2">
+                                <input type="button" value="Add" class="u-full-width" onclick="addNewEmployee()" id="addBtn"/>
+                                <input type="button" value="Update" class="u-full-width" onclick="updateEmployee()" id="updateBtn"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+             </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div id="table-container"></div>
+             </div>
+        </div>
+    </div>
+    <script src="table.js"></script>
+</body>
+</html>

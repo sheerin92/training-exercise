@@ -1,0 +1,45 @@
+form{
+    width:100%;
+}
+/*label{
+    float: left;
+    
+}
+#name{
+    float: left;
+    position: relative;
+    margin-top: 5px;
+    margin-right: 50px;
+    padding-left: 1px;
+    width: 30%;
+
+}
+#age{
+    float: left;
+    position: relative;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    width: 30%;
+
+}
+#designation{
+    float: right;
+    position: relative;
+    margin-bottom: 10px;
+    margin-right: 50px;
+    width: 30%;
+
+}*/
+
+.success, .error{
+    color: white;
+    padding: 5px;
+    margin: 5px 0 15px 0;
+}
+
+.success{
+    background: green;
+}
+.error{
+    background: red;
+}
