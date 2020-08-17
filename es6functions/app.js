@@ -67,7 +67,7 @@ function sheerinMap(inputArray, key) {
     return outputArr;
 }
 
-console.log(sheerinMap(pilots, 'years'));
+console.log("Map Output: "+sheerinMap(pilots, 'years'));
 
 
 function sheerinFilter(inputArray, key, value){
@@ -86,7 +86,7 @@ function sheerinFilter(inputArray, key, value){
     return outputArr;
 }
 
-console.log(sheerinFilter(pilots, 'years', 16));
+console.log("Filter Output: "+JSON.stringify(sheerinFilter(pilots, 'years', 16)));
 
 
 function sheerinReduce(inputArray,key){
@@ -100,7 +100,7 @@ function sheerinReduce(inputArray,key){
     })
     return output;
 }
-console.log(sheerinReduce(pilots,'years'));
+console.log("Reduce Output: "+sheerinReduce(pilots,'years'));
 
 
 
