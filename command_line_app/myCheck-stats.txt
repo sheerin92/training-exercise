@@ -1,0 +1,4 @@
+[".git","async_ex","canvas_exercises","command_line_app","CRUD","CRUD_LocalStorage","Day1","Day2","DOM_exercise","draganddrop","es6functions","Evaluation_5pgmstest","First_Html","Form_HTML","FP_basics","OOP_project","promises","prototype_ex","simple_exercises"] 
+ No. of folders: 19 
+ Longest Name: Evaluation_5pgmstest 
+ Smallest Name:.git

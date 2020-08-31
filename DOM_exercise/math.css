@@ -12,3 +12,17 @@ label{
 .btn{
     margin: 8px;
 }
+.success,.error {
+            color: white;
+            padding: 5px;
+            margin: 5px 0 15px 0;
+            text-align: left;
+        }
+
+        .success {
+            background: green;
+        }
+
+        .error {
+            background: red;
+        }

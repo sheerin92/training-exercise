@@ -1,0 +1,12 @@
+three programs correct - oddNumberArray, reverseArray, multipleOccurance.
+myFilter- while checking the if condition i missed to take the index of the array
+if(inputArray[key]>value)-X
+if(inputArray[i][key]>value)
+
+myMap- instead of putting inputArray[i]['uniqueId'] = uniqueId;
+I wrote, inputArray[key] = 'uniqueId';
+	 inputArray[value] = uniqueId;
+misconception, that key and value can be assigned in such a manner.
+
+While executing the code once again i missed to take the array. i typed
+	inputArray['uniqueId'] = uniqueId;

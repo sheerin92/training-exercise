@@ -10,3 +10,6 @@ function charMultipleOccurence(name,x){
     return count;
 }
 console.log(charMultipleOccurence('missisippi', 's'));
+
+
+

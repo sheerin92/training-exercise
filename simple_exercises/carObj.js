@@ -14,8 +14,8 @@ const carProperty= Object.create(Car);
 carProperty.steering='Power';
 carProperty.noOfGear=5;
 
-/*console.log(carProperty);
-console.log(carProperty.detail());*/
+//console.log(carProperty);
+console.log(carProperty.detail());
 
 
 /*console.log(Person.name);
@@ -40,4 +40,5 @@ console.log(addNewPropInObj(Person,'gender','female'));
 var Carobj={
     name:'Brio', brand:'Honda'
 }
-console.log(addNewPropInObj(Carobj, 'model', 2014));
+console.log(addNewPropInObj(Car, 'steering', 'power'));
+console.log(addNewPropInObj(Car, 'noOfGears', 5));
