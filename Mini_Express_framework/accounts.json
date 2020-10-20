@@ -1,0 +1,23 @@
+ [
+    {
+        "method" : "GET",
+        "url" : "/account",
+        "handler" : "handleGetAccDetails"
+    },
+    {
+        "method" : "POST",
+        "url": "/account",
+        "handler" :"handlePostAccDetails"
+    },
+    {
+        "method" :"PUT",
+        "url" : "/account/2",
+        "handler" : "handlePutAccDetails"
+    },
+    {
+        "method" : "DELETE",
+        "url" : "/account/2",
+        "handler" : "handleDeleteAccDetails"
+    }
+
+]

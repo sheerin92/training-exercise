@@ -7,5 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sheerin",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "is-valid-path": "^0.1.1"
+  }
 }

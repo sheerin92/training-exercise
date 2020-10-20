@@ -1,0 +1,11 @@
+body {
+    font-family: sans-serif;
+  }
+  
+  #wall {
+    width: 200px;
+    height: 200px;
+    background-color: yellow;
+    border: 2px solid red;
+  }
+  
