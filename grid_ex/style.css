@@ -1,0 +1,13 @@
+table, tr,td{
+    border: 2px solid black;
+    text-align: center;
+    
+}
+
+#container{
+    margin-top: 20px;
+}
+table{
+    width: 50%;
+    margin-top: 20px;
+}

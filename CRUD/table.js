@@ -19,7 +19,7 @@ var th4$ = document.createElement("th");
 var th5$ = document.createElement("th");
 var th6$ = document.createElement("th");
 
-//Assign the heading tobe displayed
+//Assign the heading to be displayed
 
 th1$.innerHTML = "Emp_ID";
 th2$.innerHTML = "Name";
