@@ -27,8 +27,8 @@ function calculate() {
     .then(res =>{
         return res.json();
     } )
-    .then(res => {
-        const rate = res.rates[to_value];
+    .then(data => {
+        const rate = data.rates[to_value];
         rateEl.innerText = `1 ${from_value} = ${rate} ${to_value}`;
         to_amount.value = (from_amount.value * rate).toFixed(2) ;
     })
