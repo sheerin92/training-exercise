@@ -1,0 +1,108 @@
+*{
+    box-sizing: border-box;
+}
+
+.card{
+    background-color:red;
+    margin: 0%;
+}
+
+h1{
+    text-align: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.task-list{
+    padding-right: 0;
+}
+
+.task-btn{
+    padding-left: 0;
+}
+
+input{
+    font-size: 18px;
+}
+
+#task{
+    border-radius: 0;
+}
+
+::placeholder {
+    font-size: 15px;
+    color: grey;
+}
+
+#table-container table{
+    width: 100%;
+    border: 1px solid #dcdcdc;
+    background-color: #f9f9f9;
+}
+
+#table-container table i{
+    cursor: pointer;
+    text-align: right;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.fa-check{
+    color: #dcdcdc;
+    font-weight: 20px;
+    visibility: hidden;
+}
+tr:nth-child(odd){
+    background-color: #fff;
+}
+tr.checked{
+    background-color:gray;
+}
+.checked .fa-check {
+    visibility: visible;
+}
+.checked .added-task{
+    text-decoration: line-through; 
+}
+.checked .fa-pencil-square-o{
+    display: none;
+}
+span{
+    cursor: pointer;
+}
+
+
+td{
+    font-size: 18px;
+}
+
+#updateBtn{
+    display: none;
+}
+
+#updateBtn, #addBtn{
+    padding-left: 0px;
+    margin: 0px;
+    background-color:#dcdcdc;
+    border-radius: 0;
+}
+
+.success, .error {
+            color: white;
+            padding: 5px;
+            margin: 5px 0 15px 0;
+        }
+
+        .success {
+            background: green;
+        }
+
+        .error {
+            background: orange;
+        }
+
+@media (max-width: 800px) {
+    .container {
+        width: 100%;
+    }
+}
