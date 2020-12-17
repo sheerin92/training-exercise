@@ -11,42 +11,66 @@ var table$ = document.createElement("table");
 
 var tbody$ = document.createElement("tbody");
 
+function getTasks() {
+    let tasks;
+    if (localStorage.getItem('tasks') === null) {
+        tasks = [];
+    } else {
+        tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+    return tasks;
+}
 
 
 function displayTaskTable(tasks) {
 
-    var node = document.getElementsByTagName("tbody");
-    node[0].querySelectorAll('*').forEach(n => n.remove());
-
-    for (var i = 0; i < tasks.length; i++) {
-
-        //Create the table row with table data
-
-        var tr$ = document.createElement("tr");
-        var td1$ = document.createElement("td");
-        var td2$ = document.createElement("td");
-        var td3$ = document.createElement("td");
-        var td4$ = document.createElement("td");
-
-        td1$.innerHTML = '<td><i class="fa fa-check"></i></td>';
-        td2$.innerHTML = tasks[i]['task'];
-        td3$.innerHTML = `<td><a onclick="editRow(${i})"><i class="fa fa-pencil-square-o"></i></a></td>`;
-        td4$.innerHTML = ` <td><a onclick="deleteRow(${i})"><i class="fa fa-times "></i></a></td> `;
-
-        td1$.width = '3%'
-        td2$.width = '89%';
-        td3$.width = '4%';
-        td4$.width = '4%';
-
-        tr$.appendChild(td1$);
-        tr$.appendChild(td2$);
-        tr$.appendChild(td3$);
-        tr$.appendChild(td4$);
-
-        tbody$.appendChild(tr$);
-
-    }
+    var tasks = getTasks();
+    tbody$.innerHTML = tasks.map(taskObj => {
+        return `<tr class = ${taskObj.isCompleted ? 'checked' : ''}>
+        <td style = "width:3%;"><i class="fa fa-check"></i></td>
+        <td style = "width:89%;"><span class='added-task' onclick="onCompleteTask(${taskObj.id})">${taskObj.task}</span></td>
+        <td style = "width:4%;"><a onclick="editTask(${taskObj.id})"><i class="fa fa-pencil-square-o"></i></a></td>
+        <td style = "width:4%;"><a onclick="deleteTask(${taskObj.id})"><i class="fa fa-times "></i></a></td> 
+        </tr>
+        `
+    }).join('');
 }
+
+/*var node = document.getElementsByTagName("tbody");
+node[0].querySelectorAll('*').forEach(n => n.remove());
+
+for (var i = 0; i < tasks.length; i++) {
+
+    //Create the table row with table data
+
+    var tr$ = document.createElement("tr");
+    var td1$ = document.createElement("td");
+    var td2$ = document.createElement("td");
+    var td3$ = document.createElement("td");
+    var td4$ = document.createElement("td");
+
+    const taskObj = tasks[i];
+
+    td1$.innerHTML = '<td><i class="fa fa-check"></i></td>';
+    td2$.innerHTML = `<span class='added-task' onclick="onCompleteTask(${i})">${taskObj.task}</span>`;
+    td3$.innerHTML = `<td><a onclick="editTask(${i})"><i class="fa fa-pencil-square-o"></i></a></td>`;
+    td4$.innerHTML = ` <td><a onclick="deleteTask(${i})"><i class="fa fa-times "></i></a></td> `;
+
+    td1$.width = '3%'
+    td2$.width = '89%';
+    td3$.width = '4%';
+    td4$.width = '4%';
+
+    tr$.className = `${taskObj.isCompleted ? 'checked' : ''}`;
+    tr$.appendChild(td1$);
+    tr$.appendChild(td2$);
+    tr$.appendChild(td3$);
+    tr$.appendChild(td4$);
+
+    tbody$.appendChild(tr$);
+
+}*/
+
 
 table$.appendChild(tbody$);
 table_container.appendChild(table$);
@@ -55,50 +79,99 @@ function addNewTask() {
     var newTask = {};
     const task$ = taskEl.value;
     count++;
-    if(task$ == ''){
-        alert('Enter some task');
-    } else {
+
+    if (task$ == '') {
+        showAlert('Please add some task', 'error');
+        return;
+    }
 
     newTask['task'] = task$;
     newTask['id'] = count;
+    newTask['isCompleted'] = false;
 
+    var tasks = getTasks();
     tasks.push(newTask);
+    showAlert("Task added successfully!", 'success');
+    localStorage.setItem('tasks', JSON.stringify(tasks));
 
     displayTaskTable(tasks);
     clearFields();
-    }
 }
+document.addEventListener('DOMContentLoaded', displayTaskTable);
 
-function deleteRow(index) {
+function deleteTask(taskID) {
+    var tasks = getTasks();
+    var foundTask = tasks.find((task)=> task.id == taskID);
+    var index = tasks.indexOf(foundTask);
     tasks.splice(index, 1);
+
+    showAlert('Deleted Successfully!', 'success');
+    localStorage.setItem('tasks', JSON.stringify(tasks));
     displayTaskTable(tasks);
 }
 
-function editRow(index) {
-    var editTask = tasks[index];
-    activatedTask = editTask;
-    taskEl.value = editTask.task;
-    updateBtn.style.display='block';
-    addBtn.style.display='none';
+function editTask(taskID) {
+    var tasks = getTasks();
+    var foundTask = tasks.find((task)=> task.id == taskID);
+    var index = tasks.indexOf(foundTask);
+    var taskToBeEdited = tasks[index];
+
+    activatedTask = taskToBeEdited;
+    taskEl.value = taskToBeEdited.task;
+
+    updateBtn.style.display = 'block';
+    addBtn.style.display = 'none';
 }
 
-function updateTask(){
+function updateTask() {
+    var tasks = getTasks();
+
     const id = activatedTask.id;
     const editedTask = taskEl.value;
+    
     var foundTask = tasks.find(task => {
         return task.id == id;
     });
-    foundTask.task = editedTask; 
+    foundTask.task = editedTask;
+    showAlert('Updated Successfully!', 'success');
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
     displayTaskTable(tasks);
     clearFields();
-    updateBtn.style.display='none';
-    addBtn.style.display='block';
+
+    updateBtn.style.display = 'none';
+    addBtn.style.display = 'block';
+}
+
+function onCompleteTask(taskID) {
+    var tasks = getTasks();
+    var foundTask = tasks.find((task)=> task.id == taskID);
+    var index = tasks.indexOf(foundTask);
+    var completedTask = tasks[index];
+
+    completedTask.isCompleted = !completedTask.isCompleted;
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    displayTaskTable(tasks);
 }
 
 function clearFields() {
     taskEl.value = '';
 }
 
+function showAlert(message, className) {
+
+    const div = document.createElement('div');
+    div.className = `alert ${className}`;
+    div.appendChild(document.createTextNode(message));
+    const container = document.getElementById("header");
+    const form = document.getElementById("task-form");
+    container.insertBefore(div, form);
+
+    setTimeout(function () {
+        document.querySelector('.alert').remove();
+    }, 2000);
+}
 //Event Listeners
 addBtn.addEventListener('click', addNewTask);
 updateBtn.addEventListener('click', updateTask);

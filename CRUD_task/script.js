@@ -25,45 +25,18 @@ function getTasks() {
 function displayTaskTable(tasks) {
 
     var tasks = getTasks();
-
-    var node = document.getElementsByTagName("tbody");
-    node[0].querySelectorAll('*').forEach(n => n.remove());
-
-    for (var i = 0; i < tasks.length; i++) {
-
-        //Create the table row with table data
-
-        var tr$ = document.createElement("tr");
-        var td1$ = document.createElement("td");
-        var td2$ = document.createElement("td");
-        var td3$ = document.createElement("td");
-        var td4$ = document.createElement("td");
-
-        const taskObj = tasks[i];
-
-        td1$.innerHTML = '<td><i class="fa fa-check"></i></td>';
-        td2$.innerHTML = `<span class='added-task' onclick="onCompleteTask(${i})">${taskObj.task}</span>`;
-        td3$.innerHTML = `<td><a onclick="editTask(${i})"><i class="fa fa-pencil-square-o"></i></a></td>`;
-        td4$.innerHTML = ` <td><a onclick="deleteTask(${i})"><i class="fa fa-times "></i></a></td> `;
-
-        td1$.width = '3%'
-        td2$.width = '89%';
-        td3$.width = '4%';
-        td4$.width = '4%';
-
-        tr$.className = `${taskObj.isCompleted ? 'checked' : ''}`;
-        tr$.appendChild(td1$);
-        tr$.appendChild(td2$);
-        tr$.appendChild(td3$);
-        tr$.appendChild(td4$);
-
-        tbody$.appendChild(tr$);
-
-    }
+    tbody$.innerHTML = tasks.map(taskObj => {
+        return `<tr class = ${taskObj.isCompleted ? 'checked' : ''}>
+        <td style = "width:3%;"><i class="fa fa-check"></i></td>
+        <td style = "width:89%;"><span class='added-task' onclick="onCompleteTask(${taskObj.id})">${taskObj.task}</span></td>
+        <td style = "width:4%;"><a onclick="editTask(${taskObj.id})"><i class="fa fa-pencil-square-o"></i></a></td>
+        <td style = "width:4%;"><a onclick="deleteTask(${taskObj.id})"><i class="fa fa-times "></i></a></td> 
+        </tr>
+        `
+    }).join('');
+    table$.appendChild(tbody$);
+    table_container.appendChild(table$);
 }
-
-table$.appendChild(tbody$);
-table_container.appendChild(table$);
 
 function addNewTask() {
     var newTask = {};
@@ -89,43 +62,58 @@ function addNewTask() {
 }
 document.addEventListener('DOMContentLoaded', displayTaskTable);
 
-function deleteTask(index) {
+function deleteTask(taskID) {
     var tasks = getTasks();
+    var foundTask = tasks.find((task) => task.id == taskID);
+    var index = tasks.indexOf(foundTask);
     tasks.splice(index, 1);
+
     showAlert('Deleted Successfully!', 'success');
     localStorage.setItem('tasks', JSON.stringify(tasks));
     displayTaskTable(tasks);
 }
 
-function editTask(index) {
+function editTask(taskID) {
     var tasks = getTasks();
-    var editTask = tasks[index];
-    activatedTask = editTask;
-    taskEl.value = editTask.task;
+    var foundTask = tasks.find((task) => task.id == taskID);
+    var index = tasks.indexOf(foundTask);
+    var taskToBeEdited = tasks[index];
+
+    activatedTask = taskToBeEdited;
+    taskEl.value = taskToBeEdited.task;
+
     updateBtn.style.display = 'block';
     addBtn.style.display = 'none';
 }
 
 function updateTask() {
     var tasks = getTasks();
+
     const id = activatedTask.id;
     const editedTask = taskEl.value;
+
     var foundTask = tasks.find(task => {
         return task.id == id;
     });
     foundTask.task = editedTask;
     showAlert('Updated Successfully!', 'success');
+
     localStorage.setItem('tasks', JSON.stringify(tasks));
     displayTaskTable(tasks);
     clearFields();
+
     updateBtn.style.display = 'none';
     addBtn.style.display = 'block';
 }
 
-function onCompleteTask(index) {
+function onCompleteTask(taskID) {
     var tasks = getTasks();
+    var foundTask = tasks.find((task) => task.id == taskID);
+    var index = tasks.indexOf(foundTask);
     var completedTask = tasks[index];
+
     completedTask.isCompleted = !completedTask.isCompleted;
+
     localStorage.setItem('tasks', JSON.stringify(tasks));
     displayTaskTable(tasks);
 }
