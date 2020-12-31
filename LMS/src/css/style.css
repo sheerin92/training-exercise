@@ -1,0 +1,68 @@
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+table, td {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    text-align: center;
+}
+
+#table-container {
+    margin-top: 20px;
+}
+
+#table-container table {
+    width: 100%;
+    background-color: #f9f9f9;
+}
+tr:nth-child(odd){
+    background-color: #fff;
+}
+td,th {
+    padding: 15px;  
+    text-align: left;
+}
+ul{
+    padding-left: 0;
+}
+h6{
+    text-align:center
+}
+#table-container table i {
+    cursor: pointer;
+}
+
+#updateBtn {
+    display: none;
+}
+#issueBtn{
+    margin-top: 28px;
+}
+.card{
+    border: transparent;
+}
+#userSelect,#bookSelect{
+    height: 38px;
+    font-size: 1rem;   
+}
+span{
+    color: red;
+}
+::placeholder {
+    font-size: 15px;
+    color: grey;
+}
+.success, .error {
+    color: white;
+    padding: 5px;
+    margin: 5px 0 15px 0;
+}
+
+.success {
+    background: green;
+}
+
+.error {
+    background: red;
+}

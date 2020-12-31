@@ -1,0 +1,11 @@
+body{
+    background-image: url("./Library.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+h1{
+    padding-top: 250px;
+    color: white;
+}
