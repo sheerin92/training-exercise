@@ -99,8 +99,7 @@ function addIssuedBookDetails() {
         showAlert('Please fill the details', 'error');
         return;
     }
-
-
+    
     var foundBook = bookList.find(bookObj => {
         return book == bookObj.bookName
     })
