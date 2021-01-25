@@ -1,0 +1,15 @@
+{
+  "name": "ppm_tool",
+  "version": "1.0.0",
+  "description": "Provility Package Manager Tool",
+  "main": "ppm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sheerin",
+  "license": "ISC",
+  "dependencies": {
+    "any-file": "0.0.29",
+    "node-fetch": "^2.6.1"
+  }
+}
