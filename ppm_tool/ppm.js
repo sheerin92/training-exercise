@@ -2,6 +2,7 @@ var fs = require('fs');
 const fetch = require("node-fetch");
 var AnyFile = require('any-file');
 const path = require('path');
+const folderName = 'ppm_modules';
 
 var data = fs.readFileSync(__dirname + '/dependencies.json', 'utf8');
 var dependencyData = JSON.parse(data);
@@ -29,7 +30,11 @@ registryData.get("https://packagemanager.vercel.app/registry.json")
         const registryDependancies = regData.config;
         //console.log(registryDependancies);
         downloadDependencies(registryDependancies);
-        createDir();
+        var dir = `./${folderName}`;
+        if (!fs.existsSync(dir)){
+            console.log("Directory already exists");
+            createDir();
+        } 
     })
     .catch(err => console.log(err));
 
@@ -47,7 +52,7 @@ function downloadDependencies(registryDependancies) {
 }
 
 function createDir() {
-    fs.mkdir(path.join(__dirname, 'ppm_modules'), (err) => {
+    fs.mkdir(path.join(__dirname, folderName), (err) => {
         if (err) {
             return console.error(err);
         }
@@ -59,7 +64,7 @@ function installDependency(dependency) {
     var af = new AnyFile();
     fromFile = dependency.path;
     toFileName = dependency.name;
-    toFile = __dirname + `/ppm_modules/ ${toFileName}.txt`;
+    toFile = __dirname + `/${folderName}/ ${toFileName}.txt`;
 
     af.from(fromFile).to(toFile, function (err, res) {
         if (res) {
