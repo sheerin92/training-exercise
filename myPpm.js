@@ -34,7 +34,7 @@ registryData.get("https://packagemanager.vercel.app/registry.json")
             });
         });
         //console.log(resultantDependencies);
-        fs.mkdir(path.join(__dirname, 'ppm_modules'), (err) => {
+        fs.mkdir(path.join(__dirname, 'ppm_modules1'), (err) => {
             if (err) {
                 return console.error(err);
             }
@@ -42,14 +42,12 @@ registryData.get("https://packagemanager.vercel.app/registry.json")
         });
         var af = new AnyFile();
         var fromFile;
-        var toFileName;
         var toFile;
-        for (var i = 0; i < resultantDependencies.length; i++) {
-
-            fromFile = resultantDependencies[i].path;
-            toFileName = resultantDependencies[i].name;
-            toFile = `${toFileName}.txt`;
-
+        resultantDependencies.forEach(resultantDependency => {
+            fromFile = resultantDependency.path;
+            var toFileName = resultantDependency.name;
+            toFile = __dirname + `/ppm_modules1/ ${toFileName}.txt`;
+        });
             af.from(fromFile).to(toFile, function (err, res) {
                 if (res) {
                     console.log("File copied!");
@@ -57,6 +55,6 @@ registryData.get("https://packagemanager.vercel.app/registry.json")
                     console.log("File not copied!");
                 }
             });
-        }
+        
     })
     .catch(err => console.log(err));

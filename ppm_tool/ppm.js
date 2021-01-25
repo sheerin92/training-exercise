@@ -30,11 +30,7 @@ registryData.get("https://packagemanager.vercel.app/registry.json")
         const registryDependancies = regData.config;
         //console.log(registryDependancies);
         downloadDependencies(registryDependancies);
-        var dir = `./${folderName}`;
-        if (!fs.existsSync(dir)){
-            console.log("Directory already exists");
-            createDir();
-        } 
+        createDir();
     })
     .catch(err => console.log(err));
 
@@ -52,19 +48,30 @@ function downloadDependencies(registryDependancies) {
 }
 
 function createDir() {
+    var dir = `./${folderName}`;
+    if (fs.existsSync(dir)) {
+        console.log("Directory already exists");
+        return;
+    }
     fs.mkdir(path.join(__dirname, folderName), (err) => {
         if (err) {
             return console.error(err);
         }
         console.log('Directory created successfully!');
     });
+
 }
 
 function installDependency(dependency) {
     var af = new AnyFile();
-    fromFile = dependency.path;
-    toFileName = dependency.name;
-    toFile = __dirname + `/${folderName}/ ${toFileName}.txt`;
+    const fromFile = dependency.path;
+    const toFileName = dependency.name;
+    const toFile = __dirname + `/${folderName}/ ${toFileName}.txt`;
+   
+    if (fs.existsSync(toFile)) {
+        console.log(toFileName+".txt - File already exists");
+        return;
+    }
 
     af.from(fromFile).to(toFile, function (err, res) {
         if (res) {
@@ -72,5 +79,6 @@ function installDependency(dependency) {
         } else {
             console.log("File not copied!");
         }
-    });
+    });    
 }
+
