@@ -3,6 +3,7 @@ const fetch = require("node-fetch");
 var AnyFile = require('any-file');
 const path = require('path');
 const folderName = 'ppm_modules';
+var AdmZip = require('adm-zip');
 
 var data = fs.readFileSync(__dirname + '/dependencies.json', 'utf8');
 var dependencyData = JSON.parse(data);
@@ -23,14 +24,15 @@ class RegistryData {
 
 const registryData = new RegistryData;
 
-registryData.get("https://packagemanager.vercel.app/registry.json")
+registryData.get("https://ppm-registry.s3.ap-south-1.amazonaws.com/registry.json")
     .then(data => {
         var regData = data;
         //console.log(regData);
-        const registryDependancies = regData.config;
+        const registryDependancies = regData.configs;
         //console.log(registryDependancies);
-        downloadDependencies(registryDependancies);
         createDir();
+        downloadDependencies(registryDependancies);
+
     })
     .catch(err => console.log(err));
 
@@ -39,10 +41,9 @@ function downloadDependencies(registryDependancies) {
         var foundDependency = registryDependancies.find((registryDependency) => {
             return registryDependency.name == dependency.name && registryDependency.version == dependency.version;
         })
-        // console.log(foundDependency);
+        //console.log(foundDependency);
         if (foundDependency) {
             installDependency(foundDependency);
-            return;
         }
     });
 }
@@ -63,22 +64,24 @@ function createDir() {
 }
 
 function installDependency(dependency) {
+
     var af = new AnyFile();
     const fromFile = dependency.path;
     const toFileName = dependency.name;
-    const toFile = __dirname + `/${folderName}/ ${toFileName}.txt`;
-   
+    const toFile = __dirname + `/${folderName}/${toFileName}.zip`;
+
     if (fs.existsSync(toFile)) {
-        console.log(toFileName+".txt - File already exists");
+        console.log(toFileName + ".zip - File already exists");
         return;
     }
 
     af.from(fromFile).to(toFile, function (err, res) {
         if (res) {
+           // var zip = new AdmZip(toFile);
+            //zip.extractAllTo(__dirname + `/${folderName}`, true);
             console.log("File copied!");
         } else {
             console.log("File not copied!");
         }
-    });    
+    });
 }
-

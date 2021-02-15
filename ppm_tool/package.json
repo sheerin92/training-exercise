@@ -9,6 +9,7 @@
   "author": "Sheerin",
   "license": "ISC",
   "dependencies": {
+    "adm-zip": "^0.5.2",
     "any-file": "0.0.29",
     "node-fetch": "^2.6.1"
   }
