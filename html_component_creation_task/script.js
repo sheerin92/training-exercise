@@ -206,7 +206,7 @@ var tagList = [];
 function renderCountryList(countryList) {
 
     countryNameWithFlag.innerHTML = countryList.map(country =>
-        `
+    `
     <li onclick="addTag(${country.id})"> <span>
     <img class="flag" src = "flags/${country.alpha2}.png"/>${country.name}
     </span>

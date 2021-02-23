@@ -33,4 +33,5 @@ function minNo(input) {
 
 const inputArr = [1, 2, 3, 4, 5];
 console.log(minNo(inputArr));
-console.log(maxNo(inputArr));
+console.log(maxNo(inputArr)); 
+
