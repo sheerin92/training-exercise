@@ -48,7 +48,7 @@ function toggleSettingsForm() {
     settings.classList.toggle('hide');
 }
 
-text.addEventListener('input', checkWordTyped);
+textEl.addEventListener('input', checkWordTyped);
 
 function checkWordTyped(e) {
     var word = wordEl.innerText;
