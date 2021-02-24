@@ -1,5 +1,5 @@
-const word = document.getElementById('word');
-const text = document.getElementById('text');
+const wordEl = document.getElementById('word');
+const textEl = document.getElementById('text');
 const scoreEl = document.getElementById('score');
 const timeEl = document.getElementById('time');
 const endgameEl = document.getElementById('end-game-container');
@@ -33,15 +33,13 @@ const words = [
 ];
 
 var wordIndex = 0;
-getWord(words[wordIndex]);
+addWordToDom(words[wordIndex]);
 
 let score = 0;
 let time = 10;
 
-decreaseTime();
-
-function getWord(wordsFromArray) {
-    word.innerHTML = wordsFromArray;
+function addWordToDom(word) {
+    wordEl.innerHTML = word;
 }
 
 settingsBtn.addEventListener('click', toggleSettingsForm);
@@ -53,30 +51,29 @@ function toggleSettingsForm() {
 text.addEventListener('input', checkWordTyped);
 
 function checkWordTyped(e) {
+    var word = wordEl.innerText;
     var typedWord = e.target.value;
 
-    if (typedWord == word.innerText) {
+    if (typedWord == word) {
         wordIndex++;
-        getWord(words[wordIndex]);
+        addWordToDom(words[wordIndex]);
         updateScore();
         updateTime();
-        text.value = '';
+        textEl.value = '';
+    }
+}
+var myInterval = setInterval(init, 1000);
+
+function init() {
+    time--;
+    timeEl.innerHTML = time + 's';
+    if (time === 0) {
+        clearInterval(myInterval);
+        gameOver();
     }
 }
 
-function decreaseTime(){
-    var myInterval = setInterval(() => {
-        time--;
-        timeEl.innerHTML = time + 's';
-        if(time === 0){
-            clearInterval(myInterval);
-            gameOver();
-        }
-    }, 1000);
-    
-}
-
-function gameOver(){
+function gameOver() {
     endgameEl.innerHTML = `
     <h1> Time ran out </h1>
     <p> Your final score is ${score}</p>
@@ -93,16 +90,14 @@ function updateScore() {
 function updateTime() {
     switch (difficultySelect.value) {
         case 'hard':
-            time += 1;
-            timeEl.innerHTML = time +'s';
+            time += 2;
             break;
         case 'medium':
-            time += 2;
-            timeEl.innerHTML = time + 's';
+            time += 3;
             break;
         case 'easy':
-            time += 3;
-            timeEl.innerHTML = time + 's';
+            time += 4;
             break;
     }
+    init();
 }
