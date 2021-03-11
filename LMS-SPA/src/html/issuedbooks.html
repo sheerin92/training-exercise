@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <div class="card card-body mt-3" id="issueBookForm">
+                <form id="book-form">
+                    <div class="row" id="form">
+                        <div class="col-md-3 mx-auto">
+                            <label for="userSelect">Users</label>
+                            <select id="userSelect" class="form-control">
+                                <option selected>--select--</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mx-auto">
+                            <label for="name">Books</label>
+                            <select id="bookSelect" class="form-control">
+                                <option id="selected" selected>--select--</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mx-auto">
+                            <label for="count">Book Count</label>
+                            <input type="number" id="count" class="form-control" placeholder="count" />
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="u-full-width btn btn-primary" id="issueBtn" onclick="addIssuedBookDetails()">Issue Book</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <div id="table-container">
+                <table id="issuetab">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>User Name</th>
+                            <th>Book</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

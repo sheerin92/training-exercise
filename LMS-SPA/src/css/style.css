@@ -1,0 +1,83 @@
+.home-container{
+    background-image: url("../css/Library.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+    height:100%;
+}
+
+h1{
+    padding-top: 250px;
+    color: white;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+.nav-link{
+    cursor: pointer;
+}
+table, td {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    text-align: center;
+}
+
+#table-container,#user-table-container,#book-table-container {
+    margin-top: 20px;
+}
+
+#table-container table,#user-table-container table, #book-table-container table  {
+    width: 100%;
+    background-color: #f9f9f9;
+}
+tr:nth-child(odd){
+    background-color: #fff;
+}
+td,th {
+    padding: 15px;  
+    text-align: left;
+}
+ul{
+    padding-left: 0;
+}
+h6{
+    text-align:center
+}
+#user-table-container table i, #book-table-container table i {
+    cursor: pointer;
+}
+
+#updateUserBtn,#updateBookBtn {
+    display: none;
+}
+#issueBtn{
+    margin-top: 28px;
+}
+.card{
+    border: transparent;
+}
+#userSelect,#bookSelect{
+    height: 38px;
+    font-size: 1rem;   
+}
+span{
+    color: red;
+}
+::placeholder {
+    font-size: 15px;
+    color: grey;
+}
+.success, .error {
+    color: white;
+    padding: 5px;
+    margin: 5px 0 15px 0;
+}
+
+.success {
+    background: green;
+}
+
+.error {
+    background: red;
+}

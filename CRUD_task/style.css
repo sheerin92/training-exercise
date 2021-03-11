@@ -70,23 +70,18 @@ tr.checked{
 span{
     cursor: pointer;
 }
-
-
 td{
     font-size: 18px;
 }
-
 #updateBtn{
     display: none;
 }
-
 #updateBtn, #addBtn{
     padding-left: 0px;
     margin: 0px;
     background-color:#dcdcdc;
     border-radius: 0;
 }
-
 .success, .error {
             color: white;
             padding: 5px;
