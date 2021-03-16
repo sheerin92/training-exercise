@@ -1,5 +1,3 @@
-
-
 function getAndDisplayTheUser() {
     const userEl = document.getElementById("userSelect");
     var userList = JSON.parse(localStorage.getItem('users'));
