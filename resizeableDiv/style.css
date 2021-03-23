@@ -1,0 +1,51 @@
+.resizable {
+    background-color: pink;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.resizer {
+    background-color: white;
+    width: 100px;
+    height: 100px;
+    left: 100px;
+    top: 100px;
+    border: 1px solid black;
+    position: relative;
+}
+
+.fa {
+    position: absolute;
+    opacity: 0;
+}
+
+.top-right-arrow {
+    right: -6px;
+    top: -6px;
+    cursor: nesw-resize;
+}
+
+.bottom-left-arrow {
+    bottom: -6px;
+    left: -6px;
+    cursor: nesw-resize;
+}
+
+.top-left-arrow {
+    top: -6px;
+    left: -6px;
+    transform: rotate(90deg);
+    cursor: nwse-resize;
+}
+
+.bottom-right-arrow {
+    bottom: -6px;
+    right: -6px;
+    transform: rotate(90deg);
+    cursor: nwse-resize;
+}
+
+.fa:hover {
+    opacity: 1;
+}

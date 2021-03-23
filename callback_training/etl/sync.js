@@ -29,7 +29,6 @@ function combinedContent(cars, customers) {
 
 
 
-
 /*
 
 [

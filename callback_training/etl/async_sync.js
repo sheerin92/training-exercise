@@ -1,8 +1,10 @@
 const fs = require("fs");
 const csvToJson = require("./utils");
-var cars = []
-var customers = []
-//use fs.readFile and fs.writeFile
+var cars = [];
+var customers = [];
+
+ //use fs.readFile and fs.writeFileSync
+
 function readContent(filePath, callback) {
     fs.readFile(filePath, 'utf8', function (err, content) {
         if (err) return callback(err)
@@ -12,13 +14,13 @@ function readContent(filePath, callback) {
 
 readContent(__dirname + '/car.csv', function (content) {
     let carJson = csvToJson(content);
-    console.log(carJson);
+    //console.log(carJson);
     combinedContent(carJson, null);
 });
 
 readContent(__dirname + '/customer.csv', function (content) {
     let customerJson = csvToJson(content);
-    console.log(customerJson);
+    //console.log(customerJson);
     combinedContent(null, customerJson);
 });
 
@@ -44,21 +46,7 @@ function combinedContent(newCars, newCustomers) {
     }
 }
 
-/*
-
-[
-    {
-        id:1004,
-        name:"john",
-        age:34,
-        carCompany:'ford',
-        carName:'figo'
-    }
-]
- */
-
-// use fs.readFileSync and fs.writeFileSync
 
 
 
-// //use fs.readFile and fs.writeFileSync
+
