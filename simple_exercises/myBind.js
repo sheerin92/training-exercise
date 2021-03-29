@@ -13,5 +13,6 @@ function myBind(empObj,getNameFun){
        return getNameFun.apply(empObj);
     }
 }
-const myBindRes = myBind(employee, employee.getName);
+var myBindRes = myBind(employee, employee.getName);
+//var myBindRes = myBind(employee1, employee.getName);
 console.log(myBindRes());
