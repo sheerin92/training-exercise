@@ -1,0 +1,117 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smiley Animation</title>
+    <style>
+        canvas {
+            border: grey solid 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id=myCanvas width="400px" height="200px"></canvas>
+    <script>
+
+        var mainCanvas = document.getElementById("myCanvas");
+        var mainContext = mainCanvas.getContext("2d");
+
+        var canvasWidth = mainCanvas.width;
+        var canvasHeight = mainCanvas.height;
+        
+        var xPos = -500;
+        let framesPerSecond = 10;
+
+        function drawCircle() {
+
+            setTimeout(function () {
+
+                requestAnimationFrame(drawCircle);
+                mainContext.clearRect(0, 0, canvasWidth, canvasHeight);
+                // draw the colored region
+                mainContext.beginPath();
+                mainContext.arc(xPos, 75, 50, 0, 2 * Math.PI, true);
+                mainContext.fillStyle = 'yellow';
+                mainContext.fill();
+
+                // draw the stroke
+                mainContext.lineWidth = 1;
+                mainContext.strokeStyle = '#000';
+                mainContext.stroke();
+
+                xPos += 5;
+
+                if (xPos > 1000) {
+                    xPos = -500;
+                }
+
+
+            }, 500 / framesPerSecond);
+        }
+
+        function smallCircles() {
+
+            setTimeout(function () {
+
+                requestAnimationFrame(smallCircles);
+
+                mainContext.moveTo(55, 50);
+                mainContext.beginPath();
+                mainContext.arc(xPos - 20, 50, 4, 0, 2 * Math.PI, true);
+                mainContext.fillStyle = 'black';
+                mainContext.fill();
+
+                mainContext.moveTo(103, 49);
+
+                mainContext.beginPath();
+                mainContext.fillStyle = "black";
+                //right round eye    
+                mainContext.arc(xPos + 20, 50, 4, 0, Math.PI * 2, true);
+                mainContext.closePath();
+                mainContext.fill();
+
+                // draw the stroke
+                mainContext.lineWidth = 1;
+                mainContext.strokeStyle = '#000';
+                mainContext.stroke();
+
+                xPos += 5;
+
+                if (xPos > 1000) {
+                    xPos = -500;
+                }
+            }, 500 / framesPerSecond);
+        }
+
+        function curve() {
+
+            setTimeout(function () {
+
+                requestAnimationFrame(curve);
+
+                mainContext.moveTo(105, 75);
+                mainContext.beginPath();
+                mainContext.strokeStyle = "black";
+                mainContext.arc(xPos, 75, 30, 0, Math.PI, false);
+                //to draw a half rounded circle with a line stroke we can invoke the stroke function    
+                mainContext.stroke();
+
+
+                xPos += 5;
+
+                if (xPos > 1000) {
+                    xPos = -500;
+                }
+            }, 500 / framesPerSecond);
+        }
+
+        drawCircle();
+        smallCircles();
+        curve();
+
+    </script>
+</body>
+
+</html>
